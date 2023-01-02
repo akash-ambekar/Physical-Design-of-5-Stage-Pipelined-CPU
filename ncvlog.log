@@ -1,0 +1,58 @@
+ncvlog(64): 15.20-s051: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
+module FullAdder_1bit (A, B, S, Cin, Cout);
+                    |
+ncvlog: *W,RECOMP (ALU.v,5|20): recompiling design unit worklib.FullAdder_1bit.
+	First compiled from line 5 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 5, file: /home/vlsi6/cpu/cpu.v line 4)
+module FullAdder_4bit (A, B, S, Cin, Cout);
+                    |
+ncvlog: *W,RECOMP (ALU.v,16|20): recompiling design unit worklib.FullAdder_4bit.
+	First compiled from line 16 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 16, file: /home/vlsi6/cpu/cpu.v line 4)
+module FullAdder_16bit (A, B, S, Cin, Cout);
+                     |
+ncvlog: *W,RECOMP (ALU.v,31|21): recompiling design unit worklib.FullAdder_16bit.
+	First compiled from line 31 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 31, file: /home/vlsi6/cpu/cpu.v line 4)
+module Not_16bit (A, S);
+               |
+ncvlog: *W,RECOMP (ALU.v,46|15): recompiling design unit worklib.Not_16bit.
+	First compiled from line 46 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 46, file: /home/vlsi6/cpu/cpu.v line 4)
+module And_16bit (A, B, S);
+               |
+ncvlog: *W,RECOMP (ALU.v,55|15): recompiling design unit worklib.And_16bit.
+	First compiled from line 55 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 55, file: /home/vlsi6/cpu/cpu.v line 4)
+module Or_16bit (A, B, S);
+              |
+ncvlog: *W,RECOMP (ALU.v,65|14): recompiling design unit worklib.Or_16bit.
+	First compiled from line 65 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 65, file: /home/vlsi6/cpu/cpu.v line 4)
+module ComplementOfTwo_16bit (A, S);
+                           |
+ncvlog: *W,RECOMP (ALU.v,75|27): recompiling design unit worklib.ComplementOfTwo_16bit.
+	First compiled from line 75 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 75, file: /home/vlsi6/cpu/cpu.v line 4)
+module Lshift_16bit (A, S);
+                  |
+ncvlog: *W,RECOMP (ALU.v,85|18): recompiling design unit worklib.Lshift_16bit.
+	First compiled from line 85 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 85, file: /home/vlsi6/cpu/cpu.v line 4)
+module ArithmeticRshift_16bit (A, S);
+                            |
+ncvlog: *W,RECOMP (ALU.v,96|28): recompiling design unit worklib.ArithmeticRshift_16bit.
+	First compiled from line 96 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 96, file: /home/vlsi6/cpu/cpu.v line 4)
+module Subtract_16bit (A, B, S, Ov);
+                    |
+ncvlog: *W,RECOMP (ALU.v,107|20): recompiling design unit worklib.Subtract_16bit.
+	First compiled from line 107 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 107, file: /home/vlsi6/cpu/cpu.v line 4)
+module ALU (A, B, FuncCode, C, BCond);
+         |
+ncvlog: *W,RECOMP (ALU.v,120|9): recompiling design unit worklib.ALU.
+	First compiled from line 120 of /home/vlsi6/cpu/ALU.v.
+(`include file: ALU.v line 120, file: /home/vlsi6/cpu/cpu.v line 4)
+ncvlog: Memory Usage - 21.3M program + 29.2M data = 50.5M total
+ncvlog: CPU Usage - 0.0s system + 0.0s user = 0.0s total (0.2s, 16.3% cpu)

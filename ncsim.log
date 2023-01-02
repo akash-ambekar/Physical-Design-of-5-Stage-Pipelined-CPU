@@ -1,0 +1,73 @@
+ncsim(64): 15.20-s051: (c) Copyright 1995-2018 Cadence Design Systems, Inc.
+
+-------------------------------------
+Relinquished control to SimVision...
+ncsim> 
+ncsim> database -open waves -into waves.shm -default
+Created default SHM database waves
+ncsim> probe -create -shm cpu_TB.Passed cpu_TB.TestAns cpu_TB.TestID cpu_TB.TestNumInst cpu_TB.TestPassed cpu_TB.address1 cpu_TB.address2 cpu_TB.clk cpu_TB.data1 cpu_TB.data2 cpu_TB.i cpu_TB.is_halted cpu_TB.num_clock cpu_TB.num_inst cpu_TB.output_port cpu_TB.readM1 cpu_TB.readM2 cpu_TB.reset_n cpu_TB.testbench_finish cpu_TB.writeM2
+Created probe 1
+ncsim> run
+Test #  3-1 has been failed!
+output_port = 0x0 (Ans : 0x1)
+Clock #   22
+The testbench is finished. Summarizing...
+Test #  3-1 :     Wrong
+Test #  3-2 : No Result
+Test #  3-3 : No Result
+Test #  4-1 : No Result
+Test #  4-2 : No Result
+Test #  4-3 : No Result
+Test #  5-1 : No Result
+Test #  5-2 : No Result
+Test #  5-3 : No Result
+Test #  5-4 : No Result
+Test #  5-5 : No Result
+Test #  5-6 : No Result
+Test #  6-1 : No Result
+Test #  6-2 : No Result
+Test #  6-3 : No Result
+Test #  7-1 : No Result
+Test #  7-2 : No Result
+Test #  7-3 : No Result
+Test #  8-1 : No Result
+Test #  8-2 : No Result
+Test #  8-3 : No Result
+Test #  9-1 : No Result
+Test #  9-2 : No Result
+Test #  9-3 : No Result
+Test # 10-1 : No Result
+Test # 10-2 : No Result
+Test # 10-3 : No Result
+Test # 11-1 : No Result
+Test # 11-2 : No Result
+Test # 11-3 : No Result
+Test # 12-1 : No Result
+Test # 12-2 : No Result
+Test # 13-1 : No Result
+Test # 13-2 : No Result
+Test # 14-1 : No Result
+Test # 14-2 : No Result
+Test # 15-1 : No Result
+Test # 15-2 : No Result
+Test # 16-1 : No Result
+Test # 16-2 : No Result
+Test # 17-1 : No Result
+Test # 17-2 : No Result
+Test # 17-3 : No Result
+Test # 18-1 : No Result
+Test # 18-2 : No Result
+Test # 18-3 : No Result
+Test # 19-1 : No Result
+Test # 19-2 : No Result
+Test # 19-3 : No Result
+Test #   20 : No Result
+Pass : 6/56
+Simulation complete via $finish(1) at time 2350 NS + 0
+./cpu_TB.v:153 		$finish;
+ncsim> ^C
+ncsim> exit
+...Regained control from SimVision
+-------------------------------------
+ncsim: Memory Usage - 38.6M program + 229.1M data = 267.8M total (271.3M Peak)
+ncsim: CPU Usage - 0.5s system + 0.2s user = 0.7s total (53.3s, 1.4% cpu)

@@ -1,0 +1,349 @@
+#######################################################
+#                                                     
+#  Innovus Command Logging File                     
+#  Created on Mon Jan  2 15:54:07 2023                
+#                                                     
+#######################################################
+
+#@(#)CDS: Innovus v17.12-s095_1 (64bit) 11/09/2017 12:10 (Linux 2.6.18-194.el5)
+#@(#)CDS: NanoRoute 17.12-s095_1 NR171102-1913/17_12-UB (database version 2.30, 405.7.1) {superthreading v1.44}
+#@(#)CDS: AAE 17.12-s040 (64bit) 11/09/2017 (Linux 2.6.18-194.el5)
+#@(#)CDS: CTE 17.12-s036_1 () Nov  2 2017 09:33:40 ( )
+#@(#)CDS: SYNTECH 17.12-s012_1 () Oct 31 2017 04:30:11 ( )
+#@(#)CDS: CPE v17.12-s076
+#@(#)CDS: IQRC/TQRC 16.1.1-s220 (64bit) Fri Aug  4 09:53:48 PDT 2017 (Linux 2.6.18-194.el5)
+
+set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+suppressMessage ENCEXT-2799
+getVersion
+getVersion
+getDrawView
+loadWorkspace -name Physical
+win
+set ::TimeLib::tsgMarkCellLatchConstructFlag 1
+set conf_qxconf_file NULL
+set conf_qxlib_file NULL
+set dcgHonorSignalNetNDR 1
+set defHierChar /
+set delaycal_input_transition_delay 0.1ps
+set distributed_client_message_echo 1
+set distributed_mmmc_disable_reports_auto_redirection 0
+set eco_post_client_restore_command {update_timing ; write_eco_opt_db ;}
+set edi_pe::pegEnablePreRouteDelayedExtraction 0
+set enc_enable_print_mode_command_reset_options 1
+set floorplan_default_site CoreSite
+set fpIsMaxIoHeight 0
+set init_gnd_net {VSS VSSO}
+set init_io_file padframe.io
+set init_lef_file {../pdk/scl_pdk/stdlib/fs120/tech_data/lef/tsl180l4.lef ../pdk/scl_pdk/stdlib/fs120/lef/tsl18fs120_scl.lef ../pdk/scl_pdk/iolib/cio150/cds/lef/tsl18cio150_4lm.lef}
+set init_mmmc_file viewDefinition.tcl
+set init_oa_search_lib {}
+set init_pwr_net {VDD VDDO}
+set init_verilog cpu_netlist.v
+set latch_time_borrow_mode max_borrow
+set pegDefaultResScaleFactor 1
+set pegDetailResScaleFactor 1
+set report_inactive_arcs_format {from to when arc_type sense reason}
+set soft_stack_size_limit 63
+set tso_post_client_restore_command {update_timing ; write_eco_opt_db ;}
+init_design
+fit
+uiSetTool ruler
+init_design
+floorPlan -site CoreSite -noSnapToGrid -d 4640 4640 80 80 80 80
+addIoFiller -cell pfeed10000 -prefix FILLER -side nc
+addIoFiller -cell pfeed10000 -prefix FILLER -side e
+addIoFiller -cell pfeed10000 -prefix FILLER -side w
+addIoFiller -cell pfeed10000 -prefix FILLER -side s
+fit
+globalNetConnect VDD -type pgpin -pin VDD -override -verbose -netlistOverride
+globalNetConnect VSS -type pgpin -pin VSS -override -verbose -netlistOverride
+globalNetConnect VDDO -type pgpin -pin VDDO -override -verbose -netlistOverride
+globalNetConnect VSSO -type pgpin -pin VSSO -override -verbose -netlistOverride
+addRing -skip_via_on_wire_shape Noshape -exclude_selected 1 -skip_via_on_pin Standardcell -center 1 -stacked_via_top_layer TOP_M -type core_rings -jog_distance 0.56 -threshold 0.56 -nets {VDD VSS} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right TOP_M left TOP_M} -width 15 -spacing 5 -offset 5
+undo
+addRing -skip_via_on_wire_shape Noshape -exclude_selected 1 -skip_via_on_pin Standardcell -center 1 -stacked_via_top_layer TOP_M -type core_rings -jog_distance 0.56 -threshold 0.56 -nets {VDD VSS} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right TOP_M left TOP_M} -width 20 -spacing 5 -offset 5
+undo
+addRing -skip_via_on_wire_shape Noshape -exclude_selected 1 -skip_via_on_pin Standardcell -center 1 -stacked_via_top_layer TOP_M -type core_rings -jog_distance 0.56 -threshold 0.56 -nets {VDD VSS} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right TOP_M left TOP_M} -width 20 -spacing 10 -offset 10
+undo
+addRing -skip_via_on_wire_shape Noshape -exclude_selected 1 -skip_via_on_pin Standardcell -center 1 -stacked_via_top_layer TOP_M -type core_rings -jog_distance 0.56 -threshold 0.56 -nets {VDD VSS} -follow core -stacked_via_bottom_layer M1 -layer {bottom M3 top M3 right TOP_M left TOP_M} -width 30 -spacing 10 -offset 10
+fit
+sroute -connect {blockPin corePin padPin padRing floatingStripe secondaryPowerPin} -layerChangeRange {M1 TOP_M} -blockPinTarget nearestTarget -padPinPortConnect {allPort oneGeom} -padPinTarget nearestTarget -corePinTarget firstAfterRowEnd -floatingStripeTarget {blockring ring stripe padring ringpin blockpin followpin} -allowjogging 1 -crossoverViaLayerRange {M1 TOP_M} -nets {VDD VSS} -allowLayerChange 1 -blockPin useLef -targetViaLayerRange {M1 TOP_M}
+fit
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit TOP_M -max_same_layer_jog_length 0.88 -padcore_ring_bottom_layer_limit M3 -set_to_set_distance 40 -skip_via_on_pin Standardcell -stacked_via_top_layer TOP_M -padcore_ring_top_layer_limit TOP_M -spacing 0.46 -xleft_offset 10 -merge_stripes_value 0.56 -layer TOP_M -block_ring_bottom_layer_limit M3 -width 2 -nets {VDD VSS} -stacked_via_bottom_layer M1
+undo
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit TOP_M -max_same_layer_jog_length 0.88 -padcore_ring_bottom_layer_limit M3 -set_to_set_distance 100 -skip_via_on_pin Standardcell -stacked_via_top_layer TOP_M -padcore_ring_top_layer_limit TOP_M -spacing 0.46 -xleft_offset 10 -merge_stripes_value 0.56 -layer TOP_M -block_ring_bottom_layer_limit M3 -width 5 -nets {VDD VSS} -stacked_via_bottom_layer M1
+undo
+addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit TOP_M -max_same_layer_jog_length 0.88 -padcore_ring_bottom_layer_limit M3 -set_to_set_distance 150 -skip_via_on_pin Standardcell -stacked_via_top_layer TOP_M -padcore_ring_top_layer_limit TOP_M -spacing 0.46 -xleft_offset 10 -merge_stripes_value 0.56 -layer TOP_M -block_ring_bottom_layer_limit M3 -width 10 -nets {VDD VSS} -stacked_via_bottom_layer M1
+setPlaceMode -fp false
+report_message -start_cmd
+getPlaceMode -user -maxRouteLayer
+getPlaceMode -quiet -adaptiveFlowMode
+getPlaceMode -timingDriven -quiet
+getPlaceMode -adaptive -quiet
+getPlaceMode -relaxSoftBlockageMode -quiet
+getPlaceMode -user -relaxSoftBlockageMode
+getPlaceMode -ignoreScan -quiet
+getPlaceMode -user -ignoreScan
+getPlaceMode -repairPlace -quiet
+getPlaceMode -user -repairPlace
+getPlaceMode -inPlaceOptMode -quiet
+getPlaceMode -quiet -bypassFlowEffortHighChecking
+getPlaceMode -exp_slack_driven -quiet
+getPlaceMode -place_global_exp_special_setup_for_nvidia -quiet
+um::push_snapshot_stack
+getDesignMode -quiet -flowEffort
+getDesignMode -highSpeedCore -quiet
+getPlaceMode -quiet -adaptive
+set spgFlowInInitialPlace 1
+getPlaceMode -sdpAlignment -quiet
+getPlaceMode -softGuide -quiet
+getPlaceMode -useSdpGroup -quiet
+getPlaceMode -sdpAlignment -quiet
+getPlaceMode -enableDbSaveAreaPadding -quiet
+getPlaceMode -quiet -wireLenOptEffort
+getPlaceMode -sdpPlace -quiet
+getPlaceMode -exp_slack_driven -quiet
+getPlaceMode -sdpPlace -quiet
+getPlaceMode -groupHighLevelClkGate -quiet
+setvar spgRptErrorForScanConnection 0
+getPlaceMode -place_global_exp_allow_missing_scan_chain -quiet
+getPlaceMode -place_check_library -quiet
+getPlaceMode -trimView -quiet
+getPlaceMode -expTrimOptBeforeTDGP -quiet
+getPlaceMode -quiet -useNonTimingDeleteBufferTree
+getPlaceMode -congEffort -quiet
+getPlaceMode -relaxSoftBlockageMode -quiet
+getPlaceMode -user -relaxSoftBlockageMode
+getPlaceMode -ignoreScan -quiet
+getPlaceMode -user -ignoreScan
+getPlaceMode -repairPlace -quiet
+getPlaceMode -user -repairPlace
+getPlaceMode -congEffort -quiet
+getPlaceMode -fp -quiet
+getPlaceMode -timingDriven -quiet
+getPlaceMode -user -timingDriven
+getPlaceMode -fastFp -quiet
+getPlaceMode -clusterMode -quiet
+get_proto_model -type_match {flex_module flex_instgroup} -committed -name -tcl
+getPlaceMode -inPlaceOptMode -quiet
+getPlaceMode -quiet -bypassFlowEffortHighChecking
+getPlaceMode -ultraCongEffortFlow -quiet
+getPlaceMode -forceTiming -quiet
+getPlaceMode -fp -quiet
+getPlaceMode -fastfp -quiet
+getPlaceMode -timingDriven -quiet
+getPlaceMode -fp -quiet
+getPlaceMode -fastfp -quiet
+getPlaceMode -powerDriven -quiet
+getExtractRCMode -quiet -engine
+getAnalysisMode -quiet -clkSrcPath
+getAnalysisMode -quiet -clockPropagation
+getAnalysisMode -quiet -cppr
+setExtractRCMode -engine preRoute
+setAnalysisMode -clkSrcPath false -clockPropagation forcedIdeal
+getPlaceMode -exp_slack_driven -quiet
+isAnalysisModeSetup
+getPlaceMode -tdgpResetCteTG -quiet
+getPlaceMode -macroPlaceMode -quiet
+getPlaceMode -enableDistPlace -quiet
+getPlaceMode -exp_slack_driven -quiet
+spInternalUse TDGP ignoreTimingSpare
+set gpsPrivate::coegIsGbSignedSeedNl 0
+getPlaceMode -enableDistPlace -quiet
+getPlaceMode -quiet -expNewFastMode
+setPlaceMode -expHiddenFastMode 1
+setPlaceMode -reset -ignoreScan
+getPlaceMode -quiet -place_global_exp_auto_finish_floorplan
+getPlaceMode -quiet -IOSlackAdjust
+getAnalysisMode -quiet -honorClockDomains
+getPlaceMode -honorUserPathGroup -quiet
+getAnalysisMode -quiet -honorClockDomains
+set delaycal_use_default_delay_limit 101
+set delaycal_default_net_delay 0
+set delaycal_default_net_load 0
+set delaycal_default_net_load_ignore_for_ilm 0
+getAnalysisMode -clkSrcPath -quiet
+getAnalysisMode -clockPropagation -quiet
+getAnalysisMode -checkType -quiet
+buildTimingGraph
+getDelayCalMode -ignoreNetLoad -quiet
+getDelayCalMode -ignoreNetLoad -quiet
+setDelayCalMode -ignoreNetLoad true -quiet
+get_global timing_enable_path_group_priority
+get_global timing_constraint_enable_group_path_resetting
+set_global timing_enable_path_group_priority false
+set_global timing_constraint_enable_group_path_resetting false
+getOptMode -allowPreCTSClkSrcPaths -quiet
+set_global _is_ipo_interactive_path_groups 1
+group_path -name in2reg_tmp.20020 -from {0xf9 0xfc} -to 0xfd -ignore_source_of_trigger_arc
+getOptMode -allowPreCTSClkSrcPaths -quiet
+set_global _is_ipo_interactive_path_groups 1
+group_path -name in2out_tmp.20020 -from {0x100 0x103} -to 0x104 -ignore_source_of_trigger_arc
+set_global _is_ipo_interactive_path_groups 1
+group_path -name reg2reg_tmp.20020 -from 0x106 -to 0x107
+set_global _is_ipo_interactive_path_groups 1
+group_path -name reg2out_tmp.20020 -from 0x10a -to 0x10b
+setPathGroupOptions reg2reg_tmp.20020 -effortLevel high
+isAnalysisModeSetup
+getAnalysisMode -analysisType -quiet
+isAnalysisModeSetup
+all_setup_analysis_views
+all_hold_analysis_views
+get_analysis_view $view -delay_corner
+get_delay_corner $dcCorner -power_domain_list
+get_delay_corner $dcCorner -library_set
+get_library_set $libSetName -si
+get_delay_corner $dcCorner -late_library_set
+get_delay_corner $dcCorner -early_library_set
+get_analysis_view $view -delay_corner
+get_delay_corner $dcCorner -power_domain_list
+get_delay_corner $dcCorner -library_set
+get_library_set $libSetName -si
+get_delay_corner $dcCorner -late_library_set
+get_delay_corner $dcCorner -early_library_set
+reset_path_group -name reg2out_tmp.20020
+set_global _is_ipo_interactive_path_groups 0
+reset_path_group -name in2reg_tmp.20020
+set_global _is_ipo_interactive_path_groups 0
+reset_path_group -name in2out_tmp.20020
+set_global _is_ipo_interactive_path_groups 0
+reset_path_group -name reg2reg_tmp.20020
+set_global _is_ipo_interactive_path_groups 0
+setDelayCalMode -ignoreNetLoad false
+set delaycal_use_default_delay_limit 1000
+set delaycal_default_net_delay 1000ps
+set delaycal_default_net_load 0.5pf
+set delaycal_default_net_load_ignore_for_ilm 0
+getPlaceMode -exp_slack_driven -quiet
+setDelayCalMode -engine feDc
+getGlobalRouteMode -user -earlyGlobalMaxRouteLayer
+getGlobalRouteMode -user -earlyGlobalMinRouteLayer
+getGlobalRouteMode -user -earlyGlobalCapacityScreen
+getGlobalRouteMode -user -earlyGlobalMaxRouteLayer
+getGlobalRouteMode -user -earlyGlobalMinRouteLayer
+getGlobalRouteMode -user -earlyGlobalCapacityScreen
+getGlobalRouteMode -user -earlyGlobalMaxRouteLayer
+getGlobalRouteMode -user -earlyGlobalMinRouteLayer
+getGlobalRouteMode -user -earlyGlobalCapacityScreen
+getGlobalRouteMode -user -earlyGlobalMaxRouteLayer
+getGlobalRouteMode -user -earlyGlobalMinRouteLayer
+getGlobalRouteMode -user -earlyGlobalCapacityScreen
+scanReorder
+setDelayCalMode -engine aae
+getPlaceMode -quiet -tdgpAdjustNetWeightBySlack
+get_ccopt_clock_trees *
+getPlaceMode -exp_insert_guidance_clock_tree -quiet
+getPlaceMode -exp_cluster_based_high_fanout_buffering -quiet
+getPlaceMode -quiet -cong_repair_commit_clock_net_route_attr
+getPlaceMode -enableDbSaveAreaPadding -quiet
+getPlaceMode -quiet -wireLenOptEffort
+setPlaceMode -reset -improveWithPsp
+getPlaceMode -quiet -debugGlobalPlace
+getPlaceMode -congRepair -quiet
+getPlaceMode -fp -quiet
+getPlaceMode -congEffort -quiet
+getPlaceMode -user -rplaceIncrNPClkGateAwareMode
+getPlaceMode -user -congRepairMaxIter
+getPlaceMode -quiet -congRepairPDClkGateMode4
+setPlaceMode -rplaceIncrNPClkGateAwareMode 4
+getPlaceMode -quiet -congEffort
+setPlaceMode -congRepairMaxIter 1
+getDesignMode -quiet -congEffort
+getPlaceMode -quickCTS -quiet
+get_proto_model -type_match {flex_module flex_instgroup} -committed -name -tcl
+getPlaceMode -congRepairForceTrialRoute -quiet
+getPlaceMode -user -congRepairForceTrialRoute
+setPlaceMode -congRepairForceTrialRoute true
+um::enable_metric
+congRepair
+um::enable_metric
+um::enable_metric
+um::enable_metric
+setPlaceMode -reset -congRepairForceTrialRoute
+getPlaceMode -quiet -congRepairPDClkGateMode4
+setPlaceMode -reset -rplaceIncrNPClkGateAwareMode
+setPlaceMode -reset -congRepairMaxIter
+getPlaceMode -congRepairCleanupPadding -quiet
+getPlaceMode -quiet -wireLenOptEffort
+getPlaceMode -tdgpDumpStageTiming -quiet
+getPlaceMode -quiet -tdgpAdjustNetWeightBySlack
+getPlaceMode -exp_slack_driven -quiet
+set_global timing_enable_path_group_priority $gpsPrivate::optSave_ctePGPriority
+set_global timing_constraint_enable_group_path_resetting $gpsPrivate::optSave_ctePGResetting
+getPlaceMode -trimView -quiet
+getOptMode -quiet -viewOptPolishing
+getOptMode -quiet -fastViewOpt
+spInternalUse deleteViewOptManager
+setAnalysisMode -clkSrcPath true -clockPropagation sdcControl
+getPlaceMode -exp_slack_driven -quiet
+setExtractRCMode -engine preRoute
+setPlaceMode -reset -relaxSoftBlockageMode
+setPlaceMode -reset -ignoreScan
+setPlaceMode -reset -repairPlace
+getPlaceMode -macroPlaceMode -quiet
+getPlaceMode -exp_slack_driven -quiet
+getPlaceMode -enableDistPlace -quiet
+set gpsPrivate::coegIsGbSignedSeedNl 0
+spInternalUse TDGP recoverTimingSpare
+getPlaceMode -enableDistPlace -quiet
+setPlaceMode -reset -expHiddenFastMode
+getPlaceMode -tcg2Pass -quiet
+getPlaceMode -quiet -wireLenOptEffort
+getPlaceMode -fp -quiet
+getPlaceMode -fastfp -quiet
+getPlaceMode -doRPlace -quiet
+getPlaceMode -RTCPlaceDesignFlow -quiet
+getPlaceMode -quickCTS -quiet
+set spgFlowInInitialPlace 0
+getPlaceMode -user -maxRouteLayer
+getPlaceMode -place_global_exp_special_setup_for_nvidia -quiet
+spInternalUse TDGP resetIgnoreNetLoad
+getDesignMode -quiet -flowEffort
+report_message -end_cmd
+um::create_snapshot -name final -auto min
+um::pop_snapshot_stack
+um::create_snapshot -name place_design
+getPlaceMode -exp_slack_driven -quiet
+setDelayCalMode -siAware false
+timeDesign -preCTS
+report_timing 
+optDesign -preCTS
+create_ccopt_clock_tree_spec
+ccopt_design
+timeDesign -postCTS
+optDesign -postCTS
+create_ccopt_clock_tree_spec
+ccopt_design
+timeDesign -postCTS
+optDesign -postCTS
+timeDesign -postCTS
+uiSetTool ruler
+fit
+fit
+panPage 0 1
+panPage 0 -1
+panPage 0 1
+panPage 0 -1
+fit
+setNanoRouteMode -quiet -timingEngine {}
+setNanoRouteMode -quiet -routeWithTimingDriven 1
+setNanoRouteMode -quiet -routeWithSiDriven 1
+setNanoRouteMode -quiet -routeWithSiPostRouteFix 0
+setNanoRouteMode -quiet -drouteStartIteration default
+setNanoRouteMode -quiet -routeTopRoutingLayer default
+setNanoRouteMode -quiet -routeBottomRoutingLayer default
+setNanoRouteMode -quiet -drouteEndIteration default
+setNanoRouteMode -quiet -routeWithTimingDriven true
+setNanoRouteMode -quiet -routeWithSiDriven true
+routeDesign -globalDetail
+fit
+setAnalysisMode -analysisType onChipVariation
+timeDesign -postRoute
+setAnalysisMode -analysisType onChipVariation -cppr both
+setOptMode -fixCap true -fixTran true -fixFanoutload false
+optDesign -postRoute
+optDesign -preCTS
+report_constraint -all_violators
+report_ccopt_skew_groups
+report_constraint -all_violators
